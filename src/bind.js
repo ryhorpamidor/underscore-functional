@@ -6,8 +6,7 @@
             return func.apply(obj, args.slice(2));
         };
     }
-    
-    
+
     module.bind = bind;
     
 })(this._f);

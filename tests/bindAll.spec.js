@@ -8,7 +8,7 @@ describe('bindAll function', function() {
             getName: function() { return this.name; }
         };
         bindAll(object, 'getName');
-        expect(object.getName()).to.equal('Jonn');
+        expect(object.getName()).to.equal('John');
     });
 
     it('should bind all object methods to this object', function() {
@@ -20,6 +20,6 @@ describe('bindAll function', function() {
             getFullName: function() { return this.getName() + ' ' + this.getSurname(); }
         };
         bindAll(object, 'getFullName');
-        expect(object.getName()).to.equal('Jonn Doe');
+        expect(object.getFullName()).to.equal('John Doe');
     });
 });

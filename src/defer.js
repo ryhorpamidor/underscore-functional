@@ -2,7 +2,7 @@
     
     function defer(func) {
         var args = module._getArgumentsList(arguments);
-        var additionalArgs = args.slice(2);
+        var additionalArgs = args.slice(1);
         
         return function() {
             var self = this;

@@ -1,7 +1,7 @@
 (function(module) {
     
     function bindAll(object) {
-        var methodNames = module._getArgumentsList(arguments).slice();
+        var methodNames = module._getArgumentsList(arguments).slice(1);
 
         for (var i = 0, ln = methodNames.length, methodName, originalMethod; i < ln; i++) {
             methodName = methodNames[i];

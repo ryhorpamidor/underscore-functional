@@ -4,19 +4,22 @@
         var timerId = 0;
         var shouldInvoke = false;
         var clearTimer = function() { clearTimeout(timerId); };
+        var allowedLeading = !(options && options.leading === false);
+        var allowedTrailing = !(options && options.trailing === false);
+        var args = [];
 
         return function() {
-            var args = module._getArgumentsList(arguments);
+            args = module._getArgumentsList(arguments);
             if (timerId) {
                 shouldInvoke = true;
                 return;
             }
 
-            if (options && options.leading === false) func.apply(this, args);
+            if (allowedLeading) func.apply(this, args);
             timerId = setTimeout(function() {
                 clearTimer();
-                if (shouldInvoke) {
-                    if (options && options.trailing === false) func.apply(this, args);
+                if (shouldInvoke || !allowedLeading) {
+                    if (allowedTrailing) func.apply(this, args);
                     shouldInvoke = false;
                 }
             }, wait);

@@ -8,19 +8,23 @@ describe('delay function', function() {
         expect(cb.called).to.be.false;
     });
 
-    it('should execute the callback at the next loop', function() {
+    it('should execute the callback at the next loop', function(done) {
         var cb = sinon.spy();
         var f = defer(cb);
         f();
-        this.timeout(0);
-        expect(cb.called).to.be.true;
+        setTimeout(function() {
+            expect(cb.called).to.be.true;
+            done();
+        }, 0);
     });
 
-    it('should pass additional arguments to the callback', function() {
+    it('should pass additional arguments to the callback', function(done) {
         var cb = sinon.spy();
         var f = defer(cb, 'test');
         f();
-        this.timeout(0);
-        expect(cb.calledWith('test')).to.be.true;
+        setTimeout(function() {
+            expect(cb.calledWith('test')).to.be.true;
+            done();
+        }, 0);
     });
 });

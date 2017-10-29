@@ -8,7 +8,7 @@
             var cacheKey = hashFunc ? hashFunc.apply(this, args) : args.join('');
 
             if (!(cacheKey in cachedResults)) {
-                cachedResults[cachedResults] = func.apply(this, args);
+                cachedResults[cacheKey] = func.apply(this, args);
             }
             return cachedResults[cacheKey];
         };

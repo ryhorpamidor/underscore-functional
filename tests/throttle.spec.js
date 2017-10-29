@@ -3,60 +3,73 @@ describe('throttle function', function() {
     
     it('should be executed immediately at the first time', function() {
         var cb = sinon.spy();
-        var f = throttle(cb, 100);
+        var f = throttle(cb, 10);
         f();
         expect(cb.called).to.be.true;
     });
 
-    it('should not be executed during waiting time', function() {
+    it('should not be executed during waiting time', function(done) {
         var cb = sinon.spy();
-        var f = throttle(cb, 100);
+        var f = throttle(cb, 10);
         f();
-        this.timeout(50);
-        f();
-        expect(cb.calledOnce).to.be.true;
+        setTimeout(function() {
+            f();
+            expect(cb.calledOnce).to.be.true;
+            done();
+        }, 5);
     });
 
-    it('should be executed once after waiting time', function() {
+    it('should be executed once after waiting time', function(done) {
         var cb = sinon.spy();
-        var f = throttle(cb, 100);
+        var f = throttle(cb, 10);
         f();
-        this.timeout(50);
-        f();
-        f();
-        f();
-        this.timeout(50);
-        expect(cb.calledTwice).to.be.true;
+        setTimeout(function() {
+            f();
+            f();
+            f();
+        }, 5);
+        setTimeout(function() {
+            expect(cb.calledTwice).to.be.true;
+            done();
+        }, 10);
     });
 
-    it('should be executed after waiting time with last arguments', function() {
+    it('should be executed after waiting time with last arguments', function(done) {
         var cb = sinon.spy();
-        var f = throttle(cb, 100);
+        var f = throttle(cb, 10);
         f(1);
-        this.timeout(50);
-        f(2);
-        f(3);
-        f(4);
-        this.timeout(50);
-        expect(cb.lastCall.args[0]).to.equal(4);
+        setTimeout(function() {
+            f(2);
+            f(3);
+            f(4);
+        }, 5);
+        setTimeout(function() {
+            expect(cb.lastCall.args[0]).to.equal(4);
+            done();
+        }, 10);
     });
 
-    it('should be executed only after waiting time with switched off leading option', function() {
+    it('should be executed only after waiting time with switched off leading option', function(done) {
         var cb = sinon.spy();
-        var f = throttle(cb, 100, { leading: false });
+        var f = throttle(cb, 10, { leading: false });
         f();
         expect(cb.called).to.be.false;
-        this.timeout(100);
-        expect(cb.called).to.be.true;
+        setTimeout(function() {
+            expect(cb.called).to.be.true;
+            done();
+        }, 10);
     });
 
-    it('should not be executed after waiting time with switched off trailing option', function() {
+    it('should not be executed after waiting time with switched off trailing option', function(done) {
         var cb = sinon.spy();
-        var f = throttle(cb, 100, { trailing: false });
+        var f = throttle(cb, 10, { trailing: false });
         f();
-        this.timeout(50);
-        f();
-        this.timeout(100);
-        expect(cb.calledOnce).to.be.true;
+        setTimeout(function() {
+            f();
+        }, 5);
+        setTimeout(function() {
+            expect(cb.calledOnce).to.be.true;
+            done();
+        }, 10);
     });
 });
