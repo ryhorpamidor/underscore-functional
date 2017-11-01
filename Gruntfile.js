@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                         destinationFile,
                         'tests/<%= filePattern %>.spec.js'
                     ]  
-                },
+                }
             }
         }
     });
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     function getFilePattern(taskList) {
         if(!taskList) return '**';
         var moduleNames = (taskList || '').split(',');
-        return `+(${moduleNames.join('|')})`;
+        return '+(' + moduleNames.join('|') +')';
     }
     
     grunt.registerTask('_compile', 'Compile assets into dist folder.', function(filePattern) {
@@ -54,7 +54,6 @@ module.exports = function(grunt) {
     });
         
     grunt.registerTask('build', 'Run full build process', function(taskList) {
-        console.log(taskList)
         var filePattern = getFilePattern(taskList);
         grunt.task.run(['_compile:' + filePattern, /* any kind of validation */ '_test:' + filePattern]);
     });
