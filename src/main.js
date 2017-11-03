@@ -16,7 +16,7 @@
         before:   null,
         wrap:     null,
         negate:   null,
-        compose: null
+        compose:  null
         */
     };
 

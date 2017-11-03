@@ -3,8 +3,7 @@ describe('delay function', function() {
     
     it('should not execute the callback until the delay time', function(done) {
         var cb = sinon.spy();
-        var f = delay(cb, 10);
-        f();
+        delay(cb, 10);
         setTimeout(function() {
             expect(cb.called).to.be.false;
             done();
@@ -13,8 +12,7 @@ describe('delay function', function() {
 
     it('should execute the callback after the delay time', function(done) {
         var cb = sinon.spy();
-        var f = delay(cb, 10);
-        f();
+        delay(cb, 10);
         setTimeout(function() {
             expect(cb.called).to.be.true;
             done();
@@ -23,8 +21,7 @@ describe('delay function', function() {
 
     it('should pass additional arguments to the callback', function(done) {
         var cb = sinon.spy();
-        var f = delay(cb, 10, 'test');
-        f();
+        delay(cb, 10, 'test');
         setTimeout(function() {
             expect(cb.calledWith('test')).to.be.true;
             done();

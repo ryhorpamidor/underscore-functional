@@ -13,9 +13,9 @@ describe('partial function', function() {
         expect(f(7)).to.equal(10);
     });
     
-    it('should omit arguments marked with "_" and left them for the partial function', function() {
+    it('should omit arguments marked with "_f" and left them for the partial function', function() {
         var cb = function(a, b, c) { return a + b + c; };
-        var f = partial(cb, 'par', '_', 'al');
+        var f = partial(cb, 'par', _f, 'al');
         expect(f('ti')).to.equal('partial');
     });
 });

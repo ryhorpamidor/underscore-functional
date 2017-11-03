@@ -2,7 +2,7 @@
     
     function getMergedArgs(localArgs, args) {
         for (var i = 0; i < args.length; i++) {
-            if (args[i] !== '_') continue;
+            if (args[i] !== module) continue;
             args[i] = localArgs.shift();
         }
         return args.concat(localArgs);

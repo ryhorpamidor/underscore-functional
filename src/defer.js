@@ -3,13 +3,11 @@
     function defer(func) {
         var args = module._getArgumentsList(arguments);
         var additionalArgs = args.slice(1);
-        
-        return function() {
-            var self = this;
-            setTimeout(function() {
-                func.apply(self, additionalArgs);
-            }, 0);
-        };
+        var self = this;
+
+        setTimeout(function() {
+            func.apply(self, additionalArgs);
+        }, 0);
     }
     
     
