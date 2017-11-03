@@ -29,7 +29,7 @@ Also you may use
  * _f.js
  * _f.min.js
 
-Just put one of them into your HTML.
+Just include one of them in your HTML and leverage global ```_f``` object in your code.
 
 ## License
 

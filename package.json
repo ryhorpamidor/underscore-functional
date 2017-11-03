@@ -1,12 +1,15 @@
 {
   "name": "underscore-functional",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "A small and lightweight subset of underscore.js functional helpers",
+  "keywords": [
+    "underscore-functional",
+    "underscore",
+    "functional",
+    "helpers"
+  ],
+  "author": "Ryhor Doryn <grego0001@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "chai": "^4.1.2",
     "grunt": "^1.0.1",
