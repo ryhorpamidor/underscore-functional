@@ -13,7 +13,7 @@ describe('debounce function', function() {
         }, safeTimeout);
     });
 
-    it('should increase waiting time while invoked', function(done) {
+    it('should increase waiting time with every new invocation', function(done) {
         var cb = sinon.spy();
         var f = debounce(cb, 10);
         f();
@@ -43,7 +43,7 @@ describe('debounce function', function() {
     });
 
 
-    it('should be executed after waiting time with last arguments', function(done) {
+    it('should be executed with latest arguments after waiting time', function(done) {
         var cb = sinon.spy();
         var f = debounce(cb, 10);
         f(1);
@@ -58,7 +58,7 @@ describe('debounce function', function() {
         }, safeTimeout);
     });
 
-    it('should be executed immediately after invocation with specified parameter passed', function(done) {
+    it('should be executed immediately after invocation when the parameter marked as true', function(done) {
         var cb = sinon.spy();
         var f = debounce(cb, 10, true);
         f();

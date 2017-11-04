@@ -1,7 +1,7 @@
 describe('partial function', function() {
     var partial = _f.partial;
     
-    it('should pass provided arguments to the original function', function() {
+    it('should use additional arguments to pass them to an original function', function() {
         var cb = function(a, b) { return a + b; };
         var f = partial(cb, 1, 2);
         expect(f()).to.equal(3);
@@ -13,7 +13,7 @@ describe('partial function', function() {
         expect(f(7)).to.equal(10);
     });
     
-    it('should omit arguments marked with "_f" and left them for the partial function', function() {
+    it('should omit arguments passed as library module and left them for the partial function', function() {
         var cb = function(a, b, c) { return a + b + c; };
         var f = partial(cb, 'par', _f, 'al');
         expect(f('ti')).to.equal('partial');

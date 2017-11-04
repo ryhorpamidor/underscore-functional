@@ -34,7 +34,7 @@ describe('throttle function', function() {
         }, 150);
     });
 
-    it('should be executed after waiting time with last arguments', function(done) {
+    it('should be executed with latest arguments after waiting time', function(done) {
         var cb = sinon.spy();
         var f = throttle(cb, 100);
         f(1);

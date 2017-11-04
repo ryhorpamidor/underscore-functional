@@ -1,7 +1,7 @@
 describe('bindAll function', function() {
     var bindAll = _f.bindAll;
     
-    it('should bind object methods to this object', function() {
+    it('should bind this value of object method to the object', function() {
         var object = {
             name: 'John',
             surname: 'Doe',
@@ -11,7 +11,7 @@ describe('bindAll function', function() {
         expect(object.getName()).to.equal('John');
     });
 
-    it('should bind all object methods to this object', function() {
+    it('should bind this value of all object methods to the object', function() {
         var object = {
             name: 'John',
             surname: 'Doe',

@@ -58,21 +58,21 @@ module.exports = function(grunt) {
         return '+(' + moduleNames.join('|') +')';
     }
     
-    grunt.registerTask('_compile', 'Compile assets into dist folder.', function(filePattern) {
+    grunt.registerTask('_compile', 'Compiles assets into dist.', function(filePattern) {
         grunt.config.set('filePattern', filePattern);
         grunt.task.run(['concat', 'uglify']);
     });
     
-    grunt.registerTask('_test', 'Run tests against compiled files', function(filePattern) {
+    grunt.registerTask('_test', 'Runs tests against compiled files.', function(filePattern) {
         grunt.config.set('filePattern', filePattern);
         grunt.task.run(['karma']);
     });
 
-    grunt.registerTask('_testOriginal', 'Run tests against original underscore', function(filePattern) {
+    grunt.registerTask('_testOriginal', 'Runs tests against original underscore.', function(filePattern) {
         grunt.task.run(['clean', 'concat:original', '_test:' + filePattern]);
     });
         
-    grunt.registerTask('build', 'Run full build process', function(taskList) {
+    grunt.registerTask('build', 'Runs full build process.', function(taskList) {
         var filePattern = getFilePattern(taskList);
         grunt.task.run(['_testOriginal:' + filePattern, 'clean', '_compile:' + filePattern, '_test:' + filePattern]);
     });

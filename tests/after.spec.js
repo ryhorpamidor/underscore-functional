@@ -1,14 +1,14 @@
 describe('after function', function() {
     var after = _f.after;
     
-    it('should not invoke callback until count reach', function() {
+    it('should not invoke callback until limit is reached', function() {
         var cb = sinon.spy();
         var f = after(2, cb);
         f();
         expect(cb.called).to.be.false;
     });
     
-    it('should invoke callback when count reach', function() {
+    it('should invoke callback when limit is reached', function() {
         var cb = sinon.spy();
         var f = after(2, cb);
         f();
@@ -16,7 +16,7 @@ describe('after function', function() {
         expect(cb.called).to.be.true;
     });
     
-    it('after count reaches it should invoke callback with specified arguments', function() {
+    it('it should invoke callback with specified arguments after limit was reached', function() {
         var cb = sinon.spy();
         var f = after(2, cb);
         f();

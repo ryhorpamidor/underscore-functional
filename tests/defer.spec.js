@@ -1,13 +1,13 @@
 describe('delay function', function() {
     var defer = _f.defer;
     
-    it('should not execute the callback immediately', function() {
+    it('should not execute a callback immediately', function() {
         var cb = sinon.spy();
         defer(cb);
         expect(cb.called).to.be.false;
     });
 
-    it('should execute the callback at the next loop', function(done) {
+    it('should execute a callback at the next loop', function(done) {
         var cb = sinon.spy();
         defer(cb);
         setTimeout(function() {
@@ -16,7 +16,7 @@ describe('delay function', function() {
         }, 0);
     });
 
-    it('should pass additional arguments to the callback', function(done) {
+    it('should use additional arguments to pass them to a callback', function(done) {
         var cb = sinon.spy();
         defer(cb, 'test');
         setTimeout(function() {

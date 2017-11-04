@@ -1,7 +1,7 @@
 describe('delay function', function() {
     var delay = _f.delay;
     
-    it('should not execute the callback until the delay time', function(done) {
+    it('should not execute a callback for the delay time', function(done) {
         var cb = sinon.spy();
         delay(cb, 10);
         setTimeout(function() {
@@ -10,7 +10,7 @@ describe('delay function', function() {
         }, 5);
     });
 
-    it('should execute the callback after the delay time', function(done) {
+    it('should execute a callback after the delay time', function(done) {
         var cb = sinon.spy();
         delay(cb, 10);
         setTimeout(function() {
@@ -19,7 +19,7 @@ describe('delay function', function() {
         }, 15);
     });
 
-    it('should pass additional arguments to the callback', function(done) {
+    it('should use additional arguments to pass them to a callback', function(done) {
         var cb = sinon.spy();
         delay(cb, 10, 'test');
         setTimeout(function() {
